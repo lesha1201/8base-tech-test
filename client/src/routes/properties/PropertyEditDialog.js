@@ -13,8 +13,8 @@ const PROPERTY_EDIT_DIALOG_ID = 'PROPERTY_EDIT_DIALOG_ID';
 class PropertyEditDialog extends React.Component {
   static contextType = ModalContext;
 
-  createOnSubmit = R.memoize((id) => async (data) => {
-    await this.props.propertyUpdate({ variables: { data: { ...data, id } }});
+  createOnSubmit = R.memoize(id => async data => {
+    await this.props.propertyUpdate({ variables: { data: { ...data, id } } });
 
     this.context.closeModal(PROPERTY_EDIT_DIALOG_ID);
   });
@@ -24,57 +24,66 @@ class PropertyEditDialog extends React.Component {
   };
 
   renderFormContent = ({ handleSubmit, invalid, submitting, pristine }) => (
-    <form onSubmit={ handleSubmit }>
-      <Dialog.Header title="Edit Property" onClose={ this.onClose } />
+    <form onSubmit={handleSubmit}>
+      <Dialog.Header title="Edit Property" onClose={this.onClose} />
       <Dialog.Body scrollable>
         <Grid.Layout gap="sm" stretch>
           {
             <Grid.Box>
-              <Field name="pictures" label="Pictures" component={ FileInputField } maxFiles={ 20 } />
+              <Field name="pictures" label="Pictures" component={FileInputField} maxFiles={20} />
             </Grid.Box>
           }
           <Grid.Box>
-            <Field name="title" label="Title" type="text" component={ InputField } />
+            <Field name="title" label="Title" type="text" component={InputField} />
           </Grid.Box>
           <Grid.Box>
-            <Field name="description" label="Description" type="text" component={ InputField } />
+            <Field name="description" label="Description" type="text" component={InputField} />
           </Grid.Box>
           <Grid.Box>
-            <Field name="bedrooms" label="Bedrooms" type="text" component={ InputField } />
+            <Field name="bedrooms" label="Bedrooms" type="text" component={InputField} />
           </Grid.Box>
           <Grid.Box>
-            <Field name="sqFootage" label="Sq Footage" type="text" component={ InputField } />
+            <Field name="sqFootage" label="Sq Footage" type="text" component={InputField} />
           </Grid.Box>
           <Grid.Box>
-            <Field name="bathrooms" label="Bathrooms" type="text" component={ InputField } />
+            <Field name="bathrooms" label="Bathrooms" type="text" component={InputField} />
           </Grid.Box>
           <Grid.Box>
-            <Field name="garage" label="Garage" component={ CheckboxField } />
+            <Field name="garage" label="Garage" component={CheckboxField} />
           </Grid.Box>
           <Grid.Box>
-            <Field name="pool" label="Pool" component={ CheckboxField } />
+            <Field name="pool" label="Pool" component={CheckboxField} />
           </Grid.Box>
         </Grid.Layout>
       </Dialog.Body>
       <Dialog.Footer>
-        <Button color="neutral" variant="outlined" disabled={ submitting } onClick={ this.onClose }>Cancel</Button>
-        <Button color="primary" type="submit" disabled={ pristine || invalid } loading={ submitting }>Update Property</Button>
+        <Button color="neutral" variant="outlined" disabled={submitting} onClick={this.onClose}>
+          Cancel
+        </Button>
+        <Button color="primary" type="submit" disabled={pristine || invalid} loading={submitting}>
+          Update Property
+        </Button>
       </Dialog.Footer>
     </form>
   );
 
   renderForm = ({ args }) => {
     return (
-      <Form type="UPDATE" tableSchemaName="Properties" onSubmit={ this.createOnSubmit(args.initialValues.id) } initialValues={ args.initialValues }>
-        { this.renderFormContent }
+      <Form
+        type="UPDATE"
+        tableSchemaName="Properties"
+        onSubmit={this.createOnSubmit(args.initialValues.id)}
+        initialValues={args.initialValues}
+      >
+        {this.renderFormContent}
       </Form>
     );
   };
 
   render() {
     return (
-      <Dialog id={ PROPERTY_EDIT_DIALOG_ID } size="sm">
-        { this.renderForm }
+      <Dialog id={PROPERTY_EDIT_DIALOG_ID} size="sm">
+        {this.renderForm}
       </Dialog>
     );
   }
@@ -85,7 +94,7 @@ PropertyEditDialog = graphql(sharedGraphQL.PROPERTY_UPDATE_MUTATION, {
   options: {
     refetchQueries: ['PropertiesList'],
     context: {
-      [TOAST_SUCCESS_MESSAGE]: 'Property successfuly updated'
+      [TOAST_SUCCESS_MESSAGE]: 'Property successfuly updated',
     },
   },
 })(PropertyEditDialog);
