@@ -25,7 +25,9 @@ class ClientDeleteDialog extends React.Component {
   renderFormContent = ({ handleSubmit, invalid, submitting }) => (
     <form onSubmit={handleSubmit}>
       <Dialog.Header title="Delete Client" onClose={this.onClose} />
+
       <Dialog.Body scrollable>Are you really want to delete client?</Dialog.Body>
+
       <Dialog.Footer>
         <Button color="neutral" variant="outlined" disabled={submitting} onClick={this.onClose}>
           Cancel
