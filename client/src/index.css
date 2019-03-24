@@ -30,3 +30,7 @@
 .Toastify__toast-container {
   z-index: 99999999;
 }
+
+.tx-decor-none {
+  text-decoration: none;
+}

@@ -10,7 +10,11 @@ import { TOAST_SUCCESS_MESSAGE } from 'shared/constants';
 
 import { MainPlate, ContentPlate, Nav } from './components';
 import { Auth } from './routes/auth';
+import { Client } from './routes/client';
 import { Clients } from './routes/clients';
+import { Order } from './routes/order';
+import { Orders } from './routes/orders';
+import { Products } from './routes/products';
 
 const { REACT_APP_8BASE_API_ENDPOINT } = process.env;
 
@@ -33,10 +37,16 @@ class Application extends React.PureComponent {
           <MainPlate>
             <Nav.Plate color="BLUE">
               <Nav.Item icon="Group" to="/clients" label="Clients" />
+              <Nav.Item icon="Contract" to="/orders" label="Orders" />
+              <Nav.Item icon="Planet" to="/products" label="Products" />
             </Nav.Plate>
             <ContentPlate>
               <Switch>
                 <ProtectedRoute exact path="/clients" component={Clients} />
+                <ProtectedRoute exact path="/client/:id" component={Client} />
+                <ProtectedRoute exact path="/orders" component={Orders} />
+                <ProtectedRoute exact path="/order/:id" component={Order} />
+                <ProtectedRoute exact path="/products" component={Products} />
                 <Redirect to="/clients" />
               </Switch>
             </ContentPlate>
