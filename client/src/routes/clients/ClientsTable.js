@@ -35,10 +35,10 @@ class ClientsTable extends React.Component {
     switch (column.name) {
       case 'firstName': {
         const clientId = data.id;
-        const clientName = R.pathOr(EMPTY_FIELD_MESSAGE, [column.name, 'firstName'], data);
+        const clientName = R.pathOr(EMPTY_FIELD_MESSAGE, [column.name], data);
 
         rendered = clientId ? (
-          <Link className="tx-decor-none" to={`/client/${clientId}`}>
+          <Link className="tx-decor-none" to={`/clients/${clientId}`}>
             <StyledLink tagName="span">{clientName}</StyledLink>
           </Link>
         ) : (

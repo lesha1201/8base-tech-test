@@ -28,7 +28,7 @@ const ClientOrdersTable = ({ orders, loading }) => (
           <Table.BodyRow columns="repeat(5, 1fr) 60px" key={order.id}>
             <Table.BodyCell>
               {orderId ? (
-                <Link className="tx-decor-none" to={`/order/${orderId}`}>
+                <Link className="tx-decor-none" to={`/orders/${orderId}`}>
                   <StyledLink tagName="span">{address}</StyledLink>
                 </Link>
               ) : (
