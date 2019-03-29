@@ -29,9 +29,9 @@ let OrderInfoCard = ({ orderId }) => (
                 <Grid.Box>
                   <Text weight="semibold">Client:</Text>
                   {clientId ? (
-                    <Link className="tx-decor-none" to={`/clients/${clientId}`}>
-                      <StyledLink tagName="span">{clientName}</StyledLink>
-                    </Link>
+                    <StyledLink tagName={Link} to={`/clients/${clientId}`}>
+                      {clientName}
+                    </StyledLink>
                   ) : (
                     clientName
                   )}

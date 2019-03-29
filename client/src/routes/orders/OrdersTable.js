@@ -41,9 +41,9 @@ class OrdersTable extends React.Component {
         const clientName = R.pathOr(EMPTY_FIELD_MESSAGE, [column.name, 'firstName'], data);
 
         rendered = orderId ? (
-          <Link className="tx-decor-none" to={`/orders/${orderId}`}>
-            <StyledLink tagName="span">{clientName}</StyledLink>
-          </Link>
+          <StyledLink tagName={Link} to={`/orders/${orderId}`}>
+            {clientName}
+          </StyledLink>
         ) : (
           clientName
         );

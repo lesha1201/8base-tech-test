@@ -38,9 +38,9 @@ class ClientsTable extends React.Component {
         const clientName = R.pathOr(EMPTY_FIELD_MESSAGE, [column.name], data);
 
         rendered = clientId ? (
-          <Link className="tx-decor-none" to={`/clients/${clientId}`}>
-            <StyledLink tagName="span">{clientName}</StyledLink>
-          </Link>
+          <StyledLink tagName={Link} to={`/clients/${clientId}`}>
+            {clientName}
+          </StyledLink>
         ) : (
           clientName
         );
