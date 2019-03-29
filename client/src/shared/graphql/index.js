@@ -77,6 +77,7 @@ export const CLIENTS_LIST_QUERY = gql`
         phone
         birthday
       }
+      count
     }
   }
 `;
