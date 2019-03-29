@@ -107,7 +107,13 @@ class OrderCreateDialog extends React.Component {
                               />
                             </Grid.Box>
                             <Grid.Box>
-                              <Button squared size="sm" color="danger" onClick={() => fields.remove(index)}>
+                              <Button
+                                squared
+                                type="button"
+                                size="sm"
+                                color="danger"
+                                onClick={() => fields.remove(index)}
+                              >
                                 <Icon name="Trashcan" />
                               </Button>
                             </Grid.Box>
@@ -117,7 +123,7 @@ class OrderCreateDialog extends React.Component {
                     ))}
 
                     <Grid.Box>
-                      <Button size="sm" color="primary" onClick={() => fields.push({})}>
+                      <Button type="button" size="sm" color="primary" onClick={() => fields.push({})}>
                         Add product
                       </Button>
                     </Grid.Box>
