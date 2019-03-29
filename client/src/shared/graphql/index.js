@@ -135,6 +135,7 @@ export const ORDER_PRODUCTS_LIST_QUERY = gql`
             name
             price
             picture {
+              id
               downloadUrl
             }
           }
